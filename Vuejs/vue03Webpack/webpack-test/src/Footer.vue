@@ -1,4 +1,3 @@
-
 <style scoped>
 footer {
   height: 60px;
