@@ -16,6 +16,7 @@
 	// 	"description": "Log output to console"
 	// }
 
+
     "Vue Instance": {
         "prefix": "vuei",
         "body": [
