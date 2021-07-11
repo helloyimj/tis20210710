@@ -50,7 +50,7 @@
         el: "#app",
         data: {
             /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
-            message: "Hello, vue.js"
+            message: "Hello,Vue!!!",
         },
         //template: ``,
         methods: {
@@ -58,6 +58,10 @@
             clickBtn: function(){
                 this.$data.message = "화면을 바꿔";
             }
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
         },
         computed: {
             /* 자동처리 + 동기식. 메서드로 작성. return 필수. */

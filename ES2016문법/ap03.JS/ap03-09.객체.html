@@ -245,26 +245,91 @@
 </html>
 
 <script>
-
-    // 객체 리터럴( {} )을 이용하여 객체 생성합니다.
-    var foo = {
-        name  : 'foo',
-        age   : 30,
-        array : [1,4,5,5],
-        run   : function () {
+    // 객체 리터럴을 이용한 객체 생성
+    var person = {
+        name: "foo",
+        age: 30,
+        run: function () {
             return this.name;
         },
     };
+    console.log(typeof person, person);
 
-    console.log( foo.name );  // dot 표기법
-    console.log( foo['age '] ); // 대괄호표기법
+    // 생성자 함수를 이용한 객체 생성
+    function Foo(name, age) {
+        this.name = name;
+        this.age = age;
+        this.run = function () {
+            return this.name;
+        };
+    }
+    var goo = new Foo("goo", 40);
+    console.log(typeof goo, goo);
 
-    foo['gender'] = "man";
-    foo.gender = "womon";
-    console.log( foo['gender '] ); // 대괄호표기법
 
-    foo['name'] = "bar";
+    // 객체 리터럴을 이용한 객체 생성
+    var foo = {
+        name: "foo" /* 프로퍼티 name = 'foo'  */,
+        age: 30 /* 프로퍼티 age = 30      */,
+        array: [1, 4, 5, 5] /* 프로퍼티 array = [1,4,5,5] */,
+        run: function () {
+            return this.name;
+        } /* 메서드 */,
+    };
+
+    // 프로퍼티 읽기 - 마침표 표기법
+    console.log(foo.name);
+    console.log(foo.age);
+    console.log(foo.nickname);
+
+    // 프로퍼티 읽기 - 대괄호 표기법
+    console.log(foo["name"]);
+    console.log(foo["age"]);
+    console.log(foo["nickname"]);
+
+    // 프로퍼티 수정
+    //name 을 'bar' 로 변경
+    //age 를 50 으로 변경
+    //name과 age를 출력하시오
     foo.name = "bar";
-    console.log( foo['name '] ); // 대괄호표기법
-    
+    foo.age = 50;
+    console.log(foo.name);
+    console.log(foo.age);
+
+    // 프로퍼티 추가
+    // gender   프로퍼티 추가
+    // nickname   프로퍼티 추가
+    // gender 와 nickname 을 출력하시오
+    foo.gender = "man";
+    foo.nickname = "babo";
+    console.log(foo.gender);
+    console.log(foo.nickname);
+
+    // 프로퍼티 삭제
+    // nickname  프로퍼티 삭제
+    // gender   프로퍼티 삭제
+    // gender 와 nickname 을 출력하시오
+    delete foo.age;
+    delete foo.gender;
+    console.log(foo.age);
+    console.log(foo.gender);
+
+
+    // 리터럴을 이용한 객체 생성
+    var Dog = {
+        name: "Fido",
+        weigh: 40,
+        breed: "Mixed",
+        loves: ["walks", "fetching balls"],
+    };
+
+
+    // 리터럴을 이용한 객체 생성
+    var p = {
+        id: "a1",
+        class: "b1",
+        style: "",
+        src: "",
+        href: "",
+    };
 </script>
