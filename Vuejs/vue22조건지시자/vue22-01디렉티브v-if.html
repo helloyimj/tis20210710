@@ -136,14 +136,26 @@
             /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
             awesome: false,
         },
+        //template: ``,
         methods: {
             /* 이벤트 핸들러 등록 */
             clickBind: function(event) {
+                /*
+                // 방법1
+                if (this.$data.awesome === true) {
+                    //this.$data.awesome = false;
+                    this.$set( this.$data, "awesome", false)
+                } else {
+                    //this.$data.awesome = true;
+                    this.$set( this.$data, "awesome", true)
+                } */
+                // 방법2
                 // this.$data.awesome = !this.$data.awesome;
                 this.$set( this.$data, "awesome", !this.$data.awesome);
             }
         },
     });
+
     new Vue({
         /* edtmc^2w */
         el: "#app5",
@@ -151,9 +163,20 @@
             /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
             type: 0,
         },
+        //template: ``,
         methods: {
             /* 이벤트 핸들러 등록 */
             clickBind: function(event) {
+                /*
+                // 방법1
+                if( this.$data.type === 4) {
+                    this.$data.type = 0;
+                }
+                else {
+                    this.$data.type = this.$data.type + 1
+                }
+                */
+                // 방법2
                 // this.$data.type = (this.$data.type + 1)%4;
                 this.$set( this.$data, "type", (this.$data.type + 1)%4 );
             }

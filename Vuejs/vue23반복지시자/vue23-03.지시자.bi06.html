@@ -37,11 +37,6 @@
     <hr>
 
     <div id="app" class="col-md-10 offset-md-1">
-
-        <label for="">이름</label><input v-model:value="name">
-        <label for="">전화번호</label><input v-model:value="tel">
-        <label for="">주소</label><input v-model:value="address">
-        <button v-on:click="bthAddClick">추가</button>
         <table id="list" class="table-bordered">
             <thead>
                 <tr class="bg-warning text-white text-center">
@@ -63,6 +58,32 @@
     </div>
 
 
+    <script type="text/x-template" id="template1">
+    <div class="col-md-10 offset-md-1">
+        <label for="">이름</label>    <input type="text" name="" id="" v-model:value="name">
+        <label for="">전화번호</label><input type="text" name="" id="" v-model:value="tel">
+        <label for="">주소</label>    <input type="text" name="" id="" v-model:value="address">
+        <button v-on:click="btnAddClick" >추가</button>
+        <table id="list" class="table-bordered">
+            <thead>
+                <tr class="bg-warning text-white text-center">
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>전화번호</th>
+                    <th>주소</th>
+                </tr>
+            </thead>
+            <tbody id="contacts">
+                <tr v-for="(contact , i) in contacts" v-bind:key="i">
+                    <td>{{i+1}}</td>
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.tel}}</td>
+                    <td>{{contact.address}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </script>
 
 </body>
 
@@ -81,21 +102,30 @@
         data: {
             /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
             contacts: [
-                {name:"설현", tel:"010-", address: "서현"},
-                {name:"혜리", tel:"010-", address: "서리"},
+                {name: "설현", tel: "010-3456-8200", address: "서현"},
+                {name: "혜리", tel: "010-3456-8299", address: "서리"},
             ],
             name: null,
-            tel:null,
+            tel: null,
             address: null,
         },
+        template: "#template1",
         methods: {
             /* 이벤트 핸들러 등록 */
-            bthAddClick: function(event) {
+            btnAddClick: function(event){
+                console.log(event.target);
+
+                // 유효성 검사
+
+
+                // 객체 생성
                 var obj = {
                     name: this.$data.name,
                     tel: this.$data.tel,
                     address: this.$data.address,
                 };
+
+                // 배열 추가
                 // this.$data.contacts.push(obj);
                 // this.$data.contacts[ this.$data.contacts.length ] = obj;
                 this.$set( this.$data.contacts, this.$data.contacts.length + "", obj );

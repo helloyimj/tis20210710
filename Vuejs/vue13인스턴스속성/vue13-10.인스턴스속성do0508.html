@@ -95,18 +95,18 @@
         computed: {
             /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
             computedcopy: function() {
+                // message 값이 바뀌면 computedcopy 값도 바꿔라
                 return this.$data.message;
             }
         },
         watch: {
-            /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링.
-            메서드로 작성. 매개변수 입력 필수  */
-            message: function(params) {
-                console.log( this.$data.message );
-                //this.$data.watchcopy = params; // params ==== this.$data.message;
-                this.$set(this.$data, "watchcopy", params);
+            /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수  */
+            message: function(value) {
+                // 모니터링하는 변수는 this.$data.message
+                //  this.$data.message 가 바뀌면 자동 처리 하게 된다.
+                // this.$data.watchcopy = value; // value === this.$data.message;
+                this.$set(this.$data, "watchcopy", value);
             }
-
         },
         mounted: function() {
             console.log("mounted");
