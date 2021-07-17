@@ -137,7 +137,7 @@
                 // 화면은 왜 안바뀔까? 화면도 바뀌게 하려면 어떻게 하면 될까?
                 console.log(this.$data.arr );
 
-                this.$set( this.$data.arr, 0, 100 );
+                this.$set( this.$data.arr, "0", 100 );
                 //로그는 [100, 2, 3, 4, 5] 출력되지만 화면은 [100, 2, 3, 4, 5] 출력됨
                 console.log(this.$data.arr );
             },
@@ -146,7 +146,7 @@
 
                 // (2) [100, 300, 3, 4, 5]     <== 방법2을 적용
                 this.$data.arr[1] = 300;
-                Vue.set( this.$data.arr, 1, 300 );
+                Vue.set( this.$data.arr, "1", 300 );
                 console.log(this.$data.arr );
             },
             change3: function(event){
@@ -159,7 +159,13 @@
             },
             change4: function(event){
                 // (4) [500, 3, 4, 5, 70]      <== 방법4을 적용
-
+                // 복제 후 재할당의 또 다른 방법.
+                // 1. spread 연산자(...) 사용
+                // 2. map() 메서드 사용
+                // ...this.$data.arr = 3, 4, 5
+                const arrCopy = [ 500, ...this.$data.arr, 70]; // 복제 후 수정
+                this.$data.arr = arrCopy; // 재할당
+                this.$set( this.$data, "arr", arrCopy);
             },
         },
         components: {
