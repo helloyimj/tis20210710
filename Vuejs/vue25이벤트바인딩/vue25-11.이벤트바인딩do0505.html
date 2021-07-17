@@ -67,7 +67,7 @@
             numInput 에 입력된 값이 없으면 10을 사용하여 더하도록 작성하시오<br>
         </p>
         <div>{{computedNumInput}} 씩 증가: {{sumComputedNumInput}}</div>
-        <button click="clickBtnComputedNumInput" v-bind:data-num="computedNumInput">{{computedNumInput}}  씩 증가</button>
+        <button v-on:click="clickBtnComputedNumInput" v-bind:data-num="computedNumInput">{{computedNumInput}}  씩 증가</button>
         <hr />
     </div>
 
@@ -94,7 +94,7 @@
             numInput: 0,
             sumInput: 0,
             sum10: 0,
-            computedNumInput:0,
+            /* computedNumInput:0, */
             sumComputedNumInput:0,
         },
         //template: ``,
@@ -114,16 +114,25 @@
             },
             clickBtn10:function(event) {
                 debugger;
-                console.log(event.target);
+                console.log(event.target.dataset.num);
+                const num = event.target.dataset.num;// 문자열인가? 숫자인가?
+                //this.$data.sum10 = this.$data.sum10 + Number(num);
+                this.$set( this.$data, "sum10", this.$data.sum10 + Number(num) );
             },
-        },
-        components: {
-            /* 지역 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
-
+            clickBtnComputedNumInput: function(event) {
+                debugger;
+                console.log(event.target.dataset.computedNumInput);
+                const computedNumInput = event.target.dataset.num;
+                //this.$data.sumComputedNumInput = this.$data.sumComputedNumInput + Number(computedNumInput);
+                this.$set( this.$data, "sumComputedNumInput", this.$data.sumComputedNumInput + Number(computedNumInput) );
+            },
         },
         computed: {
             /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
-
+            computedNumInput: function() {
+                debugger;
+                return this.$data.numInput ? this.$data.numInput : 10;
+            }
         },
         watch: {
             /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수  */
