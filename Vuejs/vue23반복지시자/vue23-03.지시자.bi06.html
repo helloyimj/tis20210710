@@ -37,6 +37,11 @@
     <hr>
 
     <div id="app" class="col-md-10 offset-md-1">
+
+        <label for="">이름</label><input v-model:value="name">
+        <label for="">전화번호</label><input v-model:value="tel">
+        <label for="">주소</label><input v-model:value="address">
+        <button v-on:click="bthAddClick">추가</button>
         <table id="list" class="table-bordered">
             <thead>
                 <tr class="bg-warning text-white text-center">
@@ -55,7 +60,6 @@
                 </tr>
             </tbody>
         </table>
-        <button v-on:click="bthAddClick">추가</button>
     </div>
 
 
@@ -79,15 +83,27 @@
             contacts: [
                 {name:"설현", tel:"010-", address: "서현"},
                 {name:"혜리", tel:"010-", address: "서리"},
-            ]
+            ],
+            name: null,
+            tel:null,
+            address: null,
         },
-        //template: ``,
         methods: {
             /* 이벤트 핸들러 등록 */
             bthAddClick: function(event) {
-                var obj = {name:"혜리", tel:"010-", address: "서리"};
-                // this.$data.contacts[ this.$data.contacts.length] = obj;
+                var obj = {
+                    name: this.$data.name,
+                    tel: this.$data.tel,
+                    address: this.$data.address,
+                };
+                // this.$data.contacts.push(obj);
+                // this.$data.contacts[ this.$data.contacts.length ] = obj;
                 this.$set( this.$data.contacts, this.$data.contacts.length + "", obj );
+
+                // 초기화
+                this.$data.name = null;
+                this.$data.tel = null;
+                this.$data.address = null;
             }
         },
         components: {
